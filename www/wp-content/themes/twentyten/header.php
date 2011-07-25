@@ -1,4 +1,4 @@
-<?php // HELLO FREDDDDDDD !! ?>
+<?php // HELLO FREDDDDDDDDDDD !! ?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
