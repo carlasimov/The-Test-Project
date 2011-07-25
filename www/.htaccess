@@ -1,0 +1,29 @@
+
+# BEGIN WordPress
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
+# STEALTH-LOGIN 
+RewriteRule ^logout crashtest/wp-login.php?action=logout&amp;_wpnonce=9f60075661&stealth_out_key=arqxsusd06c0tturj3jsx3wshc [L]
+RewriteRule ^login crashtest/wp-login.php?stealth_in_key=oxtubhkortlduggxs1z1a2suie&redirect_to=http://127.0.0.1:8888/crashtest/wp-admin/ [R,L]
+RewriteRule ^the-backend crashtest/wp-admin/?stealth_admin_key=eeeaskgrleps6yd6ow2dfc5zfp [R,L]
+RewriteCond %{HTTP_REFERER} !^http://127.0.0.1:8888/crashtest/wp-admin 
+RewriteCond %{HTTP_REFERER} !^http://127.0.0.1:8888/crashtest/wp-login\.php 
+RewriteCond %{HTTP_REFERER} !^http://127.0.0.1:8888/crashtest/login 
+RewriteCond %{HTTP_REFERER} !^http://127.0.0.1:8888/crashtest/the-backend 
+RewriteCond %{QUERY_STRING} !^stealth_in_key=oxtubhkortlduggxs1z1a2suie 
+RewriteCond %{QUERY_STRING} !^stealth_out_key=arqxsusd06c0tturj3jsx3wshc 
+RewriteCond %{QUERY_STRING} !^stealth_reg_key=jjzyygn05iju1afq2uhkbuhnze 
+RewriteCond %{QUERY_STRING} !^stealth_admin_key=eeeaskgrleps6yd6ow2dfc5zfp 
+RewriteRule ^wp-login\.php http://127.0.0.1:8888/crashtest [L]
+RewriteCond %{QUERY_STRING} ^loggedout=true 
+RewriteRule ^wp-login\.php http://127.0.0.1:8888/crashtest [L]
+ 
+# END STEALTH-LOGIN
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /crashtest/index.php [L]
+</IfModule>
+
+# END WordPress
