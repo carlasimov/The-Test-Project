@@ -1,3 +1,4 @@
+<?php // HELLO IMAD! ?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
